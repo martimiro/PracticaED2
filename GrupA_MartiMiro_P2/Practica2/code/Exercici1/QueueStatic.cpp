@@ -22,8 +22,8 @@ void QueueStatic::enqueue(const int key) {
         throw out_of_range("Ja hi ha el nombre maxim d'elements"); // Tirem la excepció en cas que es compleixi la condicio incial
     }
     // Com que volem que sigui circular, és necessari que el modul sigui 0, i com que dividim el valor per si mateix, la condició inicial es compleix.
-    _last = (_last + 1) % _max_elements; 
     _content[_last] = key;
+    _last = (_last + 1) % _max_elements; 
     _num_elements = _num_elements + 1;
 }
 
@@ -47,7 +47,7 @@ void QueueStatic::print() {
     if(isEmpty()) {
         throw out_of_range("Queue buida. Afegeixi com a mínim un nombre");
     }
-    int comptador = _last;
+    int comptador = _first;
     for(int i = 0; i < _num_elements; i++) {
         cout << _content[comptador] << " ";
         comptador = (comptador + 1) % _max_elements; // Ens assegura que la llista sigui ciruclar. Ja que quan arribi al ultim index -> (n + 1) == max_size el modul serà 0.
