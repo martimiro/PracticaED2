@@ -18,6 +18,7 @@ int main(){
         cout << "4. Imprimir tot el contingut de la QueueLinked." << endl;
         cout << "5. Imprimir les posicions del front i el rear." << endl;
         cout << "6. Sortir." << endl;
+        cout << "7. Dequeue ultim. " << endl;
 
         cout << "Selecciona la opcio que vulguis fer:";
         cin >> entrada;
@@ -70,6 +71,13 @@ int main(){
                 cout << "ERROR: " << e.what();
             }
         break;
+
+        case 7:
+            try {
+                queue.dequeueUltim();
+            } catch (const exception &e) {
+                cout << "ERROR: " << e.what();
+            }  
         }
     } while (entrada != 6);
 

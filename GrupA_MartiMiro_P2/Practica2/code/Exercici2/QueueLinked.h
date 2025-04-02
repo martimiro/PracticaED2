@@ -18,6 +18,7 @@ class QueueLinked {
         void print();
         void enqueue(const Type key);
         void dequeue();
+        void dequeueUltim();
         const Type getFront() const;
         void printFrontRear();
 
@@ -104,6 +105,28 @@ void QueueLinked<Type>::dequeue() {
     if (!isEmpty()) {
         this -> _first = this -> _first -> getNext();         // Assignem com a _first el node següent de l'actual.
         delete nodePrimer;
+    } else {
+        throw out_of_range("La llista està buida");
+    }
+}
+
+template <class Type>
+void QueueLinked<Type>::dequeueUltim() {
+    Node <Type>* nodeActual = this -> _first;
+
+    if (_first == _last) {
+        delete _first;
+        _first = nullptr;
+        _last = nullptr;
+    } else if (!isEmpty()) {
+        while (nodeActual->getNext() != _last) {
+            nodeActual = nodeActual->getNext();
+        }
+
+        delete _last;
+        _last = nodeActual;
+        _last->setNext(nullptr);
+        
     } else {
         throw out_of_range("La llista està buida");
     }
