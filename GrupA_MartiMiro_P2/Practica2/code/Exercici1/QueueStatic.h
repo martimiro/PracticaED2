@@ -10,6 +10,7 @@ public:
     QueueStatic(const int max_size);
     virtual ~QueueStatic();
     void enqueue(const int key);
+    void enqueueSegon(const int key);
     void dequeue();
     bool isFull();
     bool isEmpty();

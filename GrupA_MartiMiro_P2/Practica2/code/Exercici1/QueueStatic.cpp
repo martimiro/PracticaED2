@@ -11,7 +11,7 @@ QueueStatic::QueueStatic(const int max_size) {
     this -> _max_elements = max_size;
     this -> _num_elements = 0;
     this -> _first = 0;
-    this -> _last = 0;
+    this -> _last = -1;
     this -> _content = new int[max_size];
 }
 
@@ -22,8 +22,19 @@ void QueueStatic::enqueue(const int key) {
         throw out_of_range("Ja hi ha el nombre maxim d'elements"); // Tirem la excepció en cas que es compleixi la condicio incial
     }
     // Com que volem que sigui circular, és necessari que el modul sigui 0, i com que dividim el valor per si mateix, la condició inicial es compleix.
-    _content[_last] = key;
     _last = (_last + 1) % _max_elements; 
+    _content[_last] = key;
+    
+    _num_elements = _num_elements + 1;
+}
+
+void QueueStatic::enqueueSegon(const int key) {
+    if (isFull()) {
+        throw out_of_range("Ja hi ha el nombre maxim d'elements"); // Tirem la excepció en cas que es compleixi la condicio incial
+    }
+    _last = (_last + 2) % _max_elements; 
+    _content[_last] = key;
+
     _num_elements = _num_elements + 1;
 }
 

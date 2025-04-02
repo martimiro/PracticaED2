@@ -14,6 +14,7 @@ int main(){
     cout << "Estructura creada de mida" << size << endl;
 
     int entrada;
+    int key;
 
     do {
         cout << "- MENÚ -" << endl;
@@ -23,13 +24,14 @@ int main(){
         cout << "4. Imprimir tot el contingut de la QueueStatic." << endl;
         cout << "5. Imprimir les posicions del front i el rear." << endl;
         cout << "6. Sortir." << endl;
+        cout << "7. Inserir segon." << endl;
 
         cout << "Selecciona la opcio que vulguis fer:";
         cin >> entrada;
 
         switch (entrada) {
         case 1:
-            int key;
+            key = 0;
             cout << "Insereix l'element que vulguis afegir a la QueueStatic: ";
             cin >> key;
 
@@ -75,6 +77,17 @@ int main(){
                 cout << "ERROR: " << e.what();
             }
         break;
+
+        case 7:
+            try {
+                key = 0;
+                cout << "Insereix l'element que vulguis afegir a la QueueStatic: ";
+                cin >> key;
+                queue.enqueueSegon(key);
+                cout << "Element " << key << " agregat." << endl;
+            } catch (const exception &e) {
+                cout << "ERROR: " << e.what();
+            }
         }
     } while (entrada != 6);
 
